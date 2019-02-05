@@ -1,0 +1,2 @@
+class MultiplayerGamesController < ApplicationController
+end
