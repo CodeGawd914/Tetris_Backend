@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_204248) do
+ActiveRecord::Schema.define(version: 2019_02_07_160229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_204248) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.integer "score"
+    t.integer "score", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_204248) do
     t.bigint "conversation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
@@ -56,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_204248) do
     t.string "password_digest"
     t.integer "wins", default: 0
     t.integer "losses", default: 0
-    t.integer "score"
+    t.integer "score", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

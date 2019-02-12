@@ -5,8 +5,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password_digest
       t.integer :wins,:default => 0
       t.integer :losses,:default => 0
-      t.integer :score
-      
+      t.integer :score,:default => 0
+
 
 
       t.timestamps
