@@ -5,8 +5,8 @@ class MessagesController < ApplicationController
     @message = Message.create(message_params)
     render json: @message
     conversation = Conversation.find(message_params[:conversation_id])
-    if message.save
-      serialized_data = ActiveModelSerializers::Adapter::Json.new(MessageSerializer.new(message)).serializable_hash
+    if @message.save
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(MessageSerializer.new(@message)).serializable_hash
       MessagesChannel.broadcast_to conversation, serialized_data
       head :ok
     end
