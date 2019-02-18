@@ -4,8 +4,8 @@ class ArenasController < ApplicationController
     render json: @arena
     gameroom = Gameroom.find(arena_params[:game_id])
     if arena.save
-      serialized_data = ActiveModelSerializers::Adapter::Json.new(MessageSerializer.new(arena)).serializable_hash
-      MessagesChannel.broadcast_to gameroom, serialized_data
+      serialized_data = ActiveModelSerializers::Adapter::Json.new(ArenaSerializer.new(arena)).serializable_hash
+      ArenasChannel.broadcast_to gameroom, serialized_data
       head :ok
     end
 
